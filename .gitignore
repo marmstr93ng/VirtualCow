@@ -8,3 +8,6 @@ venv/
 
 # Logging
 *.log
+
+# Tools
+.vscode/
