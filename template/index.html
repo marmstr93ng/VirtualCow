@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                background: #1E1E1E;
+                color: white;
+                padding: 10px;
+                font-family: Arial;
+                text-align: center;
+                overflow: hidden;
+            }
+            .header {
+                border-radius: 25px;
+            }
+            .title {
+                background: white;
+                color: black;
+                padding: 20px;
+            }
+            .userbar {
+                background: #323232;
+                padding: 4px 16px;
+            }
+            .username {
+                text-align: right;
+            }
+            .field {
+                padding: 20px;
+            }
+            img {
+                max-width: 40%;
+                width: auto;
+            }
+            .status {
+                font-size: 30px;
+                padding: 10px;
+            }
+            .button {
+                color: white;
+                border-radius: 12px;
+                border: none;
+                padding: 20px;
+                font-size: 24px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            .free {
+                background-color: #4CAF50;
+            }
+            .not-free {
+                background-color: #f44336;
+            }
+        </style>
+        <link rel="shortcut icon" href="../assets/favicon.ico"/>
+        <title>Virtual Cow</title>
+    </head>
+
+    <body>
+        <div class="header title">
+            <h1>Virtual Cow</h1>
+            <p>Revision Control with a "Moo"!</p>
+        </div>
+        <div class="header userbar">
+            <p class="username">m.armstrong</p>
+        </div>
+        <div class="field">
+            <img src="../assets/free.png">
+            <div class="status">The cow is free!</div>
+            <button class="button free">Acquire Cow</button>
+        </div>
+    </body>
+</html>
