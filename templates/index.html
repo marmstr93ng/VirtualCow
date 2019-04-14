@@ -11,7 +11,20 @@
             <p>Revision Control with a "Moo"!</p>
         </div>
         <div class="header userbar">
-            <p class="username">m.armstrong</p>
+            {% if username %}
+                <form action = "/" method = "post">
+                    <label>{{ username }}</label>
+                    <input type = "hidden" name = "action" value = "logout"/>
+                    <button>logout</button>
+                </form>
+            {% else %}
+                <form action = "/" method = "post">
+                    <label class="log">Name:</label>
+                    <input type = "hidden" name = "action" value = "login"/>
+                    <input class="log" type="text" name="username" id="username">
+                    <button class="log">Login</button>
+                </form>
+            {% endif %}
         </div>
 
         <div class="field">
