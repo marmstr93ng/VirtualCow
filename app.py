@@ -25,6 +25,7 @@ def index():
             return resp
 
         if request.form["action"] == "logout":
+            logging.info("{} Logging out".format(username))
             resp = make_response(redirect('/'))
             resp.delete_cookie('username')
             return resp
@@ -32,17 +33,21 @@ def index():
         if request.form["action"] == "release":
             logging.info("Setting cow free status: True")
             config["Cow"]["Free"] = "True"
+            config["Cow"]["Owner"] = ""
             with open(status_file_path, "w") as configfile:
                 config.write(configfile)
 
         if request.form["action"] == "acquire":
             logging.info("Setting cow free status: False")
             config["Cow"]["Free"] = "False"
+            config["Cow"]["Owner"] = username
             with open(status_file_path, "w") as configfile:
                 config.write(configfile)
 
     if username:
-        return render_template('index.html', username=username, cow_free=config["Cow"]["Free"]== "True")
+        logging.info("{} accessing the page".format(username))
+        return render_template('index.html', username=username, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
+    logging.info("Unknown user accessing the page")
     return render_template('index.html', cow_free=config["Cow"]["Free"]== "True")
 
 if __name__ == '__main__':

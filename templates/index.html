@@ -19,10 +19,10 @@
                 </form>
             {% else %}
                 <form action = "/" method = "post">
-                    <label class="log">Name:</label>
+                    <label>Name:</label>
                     <input type = "hidden" name = "action" value = "login"/>
-                    <input class="log" type="text" name="username" id="username">
-                    <button class="log">Login</button>
+                    <input type="text" name="username" id="username">
+                    <button>Login</button>
                 </form>
             {% endif %}
         </div>
@@ -33,14 +33,18 @@
                 <div class="status">The cow is free!</div>
                 <form action = "/" method = "post">
                     <input type = "hidden" name = "action" value = "acquire"/>
-                    <button class="button free">Acquire Cow</button>
+                    {% if username %}
+                        <button class="button free">Acquire Cow</button>
+                    {% endif %}
                 </form>
             {% else %}
                 <img src="{{ url_for('static', filename='not_free.png') }}" alt="Cow subject to servitude">
-                <div class="status">The cow is owned!</div>
+                <div class="status">The cow is owned by {{ cow_owner }}!</div>
                 <form action = "/" method = "post">
                     <input type = "hidden" name = "action" value = "release" />
-                    <button class="button not-free">Acquire Cow</button>
+                    {% if username %}
+                        <button class="button not-free">Release Cow</button>
+                    {% endif %}
                 </form>
             {% endif %}
         </div>
