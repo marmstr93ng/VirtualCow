@@ -15,14 +15,14 @@
                 <form action = "/" method = "post">
                     <label>{{ username }}</label>
                     <input type = "hidden" name = "action" value = "logout"/>
-                    <button>logout</button>
+                    <button class="log">Logout</button>
                 </form>
             {% else %}
                 <form action = "/" method = "post">
                     <label>Name:</label>
                     <input type = "hidden" name = "action" value = "login"/>
                     <input type="text" name="username" id="username">
-                    <button>Login</button>
+                    <button class="log">Login</button>
                 </form>
             {% endif %}
         </div>
