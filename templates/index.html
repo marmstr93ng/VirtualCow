@@ -1,7 +1,7 @@
 <html>
     <head>
-        <link rel="shortcut icon" href="../assets/favicon.ico"/>
-        <link rel="stylesheet" href='../assets/style.css' type="text/css"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href='../static/style.css' type="text/css"/>
         <title>Virtual Cow</title>
     </head>
 
@@ -14,7 +14,7 @@
             <p class="username">m.armstrong</p>
         </div>
         <div class="field">
-            <img src="../assets/free.png">
+                <img src="{{ url_for('static', filename='free.png') }}" alt="Cow free to frolic">
             <div class="status">The cow is free!</div>
             <button class="button free">Acquire Cow</button>
         </div>
