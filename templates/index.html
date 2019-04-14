@@ -42,7 +42,7 @@
                 <div class="status">The cow is owned by {{ cow_owner }}!</div>
                 <form action = "/" method = "post">
                     <input type = "hidden" name = "action" value = "release" />
-                    {% if username %}
+                    {% if username and username==cow_owner %}
                         <button class="button not-free">Release Cow</button>
                     {% endif %}
                 </form>
