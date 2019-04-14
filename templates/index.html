@@ -13,10 +13,31 @@
         <div class="header userbar">
             <p class="username">m.armstrong</p>
         </div>
+
         <div class="field">
+            {% if cow_free %}
                 <img src="{{ url_for('static', filename='free.png') }}" alt="Cow free to frolic">
-            <div class="status">The cow is free!</div>
-            <button class="button free">Acquire Cow</button>
+                <div class="status">The cow is free!</div>
+                <form action = "/" method = "post">
+                    <input type = "hidden" name = "action" value = "acquire"/>
+                    <button class="button free">Acquire Cow</button>
+                </form>
+            {% else %}
+                <img src="{{ url_for('static', filename='not_free.png') }}" alt="Cow subject to servitude">
+                <div class="status">The cow is owned!</div>
+                <form action = "/" method = "post">
+                    <input type = "hidden" name = "action" value = "release" />
+                    <button class="button not-free">Acquire Cow</button>
+                </form>
+            {% endif %}
         </div>
+
+        <!–– Added to stop a refresh resending the form––>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
+
     </body>
 </html>
