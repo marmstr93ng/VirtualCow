@@ -48,7 +48,7 @@ def index():
         logging.info("{} accessing the page".format(username))
         return render_template('index.html', username=username, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
     logging.info("Unknown user accessing the page")
-    return render_template('index.html', cow_free=config["Cow"]["Free"]== "True")
+    return render_template('index.html', cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
