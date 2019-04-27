@@ -39,6 +39,9 @@
                 </form>
             {% else %}
                 <img src="{{ url_for('static', filename='not_free.png') }}" alt="Cow subject to servitude">
+                {% if error %}
+                    <div class="error">Error: Couldn't acquire the cow!</div>
+                {% endif %}
                 <div class="status">The cow is owned by {{ cow_owner }}!</div>
                 <form action = "/" method = "post">
                     <input type = "hidden" name = "action" value = "release" />

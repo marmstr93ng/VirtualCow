@@ -36,6 +36,11 @@ img {
     max-width: 40%;
     width: auto;
 }
+.error {
+    font-size: 15px;
+    color: red;
+    padding: 10px;
+}
 .status {
     font-size: 30px;
     padding: 10px;
