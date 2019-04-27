@@ -11,9 +11,12 @@ config = configparser.ConfigParser()
 
 @app.route("/", methods = ["POST", "GET"])
 def index():
-    logging.info("Refreshing Index Page ...")
-
     username = request.cookies.get('username')
+    if username:
+        logging.info("{} accessing the page".format(username))
+    else:
+        logging.info("Unknown user accessing the page")
+
     config.read(status_file_path)
     error = False
 
@@ -32,6 +35,7 @@ def index():
             return resp
 
         if request.form["action"] == "release":
+            logging.info("Attempting to set cow free status")
             logging.info("Setting cow free status: True")
             config["Cow"]["Free"] = "True"
             config["Cow"]["Owner"] = ""
@@ -51,9 +55,7 @@ def index():
                     config.write(configfile)
 
     if username:
-        logging.info("{} accessing the page".format(username))
         return render_template('index.html', username=username, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"], error=error)
-    logging.info("Unknown user accessing the page")
     return render_template('index.html', cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
 
 if __name__ == '__main__':
