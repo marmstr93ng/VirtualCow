@@ -2,6 +2,7 @@ import logging
 import logging.config
 from flask import Flask, render_template, request, make_response, redirect
 import configparser
+import subprocess
 
 logging.config.fileConfig('logging/log_settings.conf')
 app = Flask(__name__)
@@ -19,6 +20,9 @@ def index():
 
     config.read(status_file_path)
     error = False
+
+    version = subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
+    print(version)
 
     if request.method == "POST":
         if request.form["action"] == "login":
@@ -55,8 +59,8 @@ def index():
                     config.write(configfile)
 
     if username:
-        return render_template('index.html', username=username, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"], error=error)
-    return render_template('index.html', cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
+        return render_template('index.html', version=version, username=username, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"], error=error)
+    return render_template('index.html', version=version, cow_free=config["Cow"]["Free"]== "True", cow_owner=config["Cow"]["Owner"])
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

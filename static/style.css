@@ -10,10 +10,20 @@ body {
 .header {
     border-radius: 25px;
 }
-.title {
+.title-bar{
     background: white;
     color: black;
-    padding: 5px;
+    padding: 1px;
+}
+.title-name {
+    font-size: 50px;
+    font-weight: bold;
+}
+.title-caption{
+
+}
+.title-subscript{
+    font-size: 10px;
 }
 .userbar {
     background: #323232;
@@ -30,7 +40,7 @@ body {
     margin: 4px 2px;
 }
 .field {
-    padding: 20px;
+    padding: 10px;
 }
 img {
     max-width: 40%;
