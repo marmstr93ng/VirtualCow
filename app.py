@@ -22,7 +22,6 @@ def index():
     error = False
 
     version = subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
-    print(version)
 
     if request.method == "POST":
         if request.form["action"] == "login":
