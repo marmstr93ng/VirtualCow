@@ -2,6 +2,9 @@
     <head>
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href='../static/style.css' type="text/css"/>
+        {% if auto_refresh %}
+            <meta http-equiv="refresh" content="30" />
+        {% endif %}
         <title>Virtual Cow</title>
     </head>
 
@@ -24,6 +27,11 @@
                     <input type = "hidden" name = "action" value = "login"/>
                     <input type="text" name="username" id="username">
                     <button class="log">Login</button>
+                </form>
+                <form action = "/" method = "post">
+                    <input type = "hidden" name = "action" value = "fresh"/>
+                    <label class="switch"><input type="checkbox" name="refresh" id="refresh"><span class="slider round"></span></label>
+                    <button class="">Auto Refresh</button>
                 </form>
             {% endif %}
         </div>
